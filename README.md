@@ -5,7 +5,9 @@
 ## Components
 
 - Base: Ubuntu 14.04
-- PHP 5.5, 5.6 or 7.0.
+- PHP 5.5 (tag: 5.5)
+- PHP 5.6 (tag: 5.6)
+- PHP 7.0 (tag: 5.7 or latest)
 - PHP composer
 - Apache 2.4 with mod_rewrite enabled
 
