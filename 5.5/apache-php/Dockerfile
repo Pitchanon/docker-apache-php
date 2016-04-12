@@ -4,7 +4,7 @@ MAINTAINER Pitchanon D <Pitchanon.d@gmail.com>
 
 ENV ENVIRONMENT=docker
 
-#Install php and dependenceis
+# Install php and base packages
 RUN export DEBIAN_FRONTEND="noninteractive" && \
     apt-get update && \
     apt-get -yq upgrade && \
@@ -19,7 +19,6 @@ RUN export DEBIAN_FRONTEND="noninteractive" && \
         php5-pgsql \
         php5-sqlite \
         git curl zip unzip acl && \
-        apache2 libapache2-mod-php5 && \
     apt-get -y clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -30,6 +29,16 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 # Enable mcrypt
 RUN php5enmod mcrypt
+
+# Install base packages
+RUN export DEBIAN_FRONTEND="noninteractive" && \
+    apt-get update && \
+    apt-get -yq upgrade && \
+    apt-get -yq install --no-install-recommends \
+        apache2 \
+        libapache2-mod-php5 && \
+    apt-get -y clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # Enable apache modules
 RUN a2enmod headers php5 rewrite ssl vhost_alias

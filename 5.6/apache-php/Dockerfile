@@ -8,11 +8,10 @@ ENV ENVIRONMENT=docker
 RUN export LANG=en_US.UTF-8 && \
     export DEBIAN_FRONTEND="noninteractive" && \
     apt-get update && \
-    apt-get -yq upgrade && \
-    apt-get -yq install --no-install-recommends && \
-    apache2 libapache2-mod-php5.6 && \
     apt-get -yq install python-software-properties && \
     add-apt-repository -y ppa:ondrej/php && \
+    apt-get update && \
+    apt-get -yq install --no-install-recommends \
         php5.6-cli \
         php5.6-curl \
         php5.6-gd \
@@ -31,6 +30,15 @@ RUN sed -i "s/variables_order.*/variables_order = \"EGPCS\"/g" /etc/php5.6/apach
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Install base packages
+RUN export DEBIAN_FRONTEND="noninteractive" && \
+    apt-get update && \
+    apt-get -yq upgrade && \
+    apt-get -yq install --no-install-recommends \
+        apache2 libapache2-mod-php5.6 && \
+    apt-get -y clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # Enable apache modules
 RUN a2dismod mpm_event && \
