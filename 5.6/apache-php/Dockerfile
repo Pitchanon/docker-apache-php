@@ -4,18 +4,15 @@ MAINTAINER Pitchanon D <Pitchanon.d@gmail.com>
 
 ENV ENVIRONMENT=docker
 
-#Install php and dependenceis
-ENV DEBIAN_FRONTEND noninteractive
-
 # Install base packages
 RUN export LANG=en_US.UTF-8 && \
     export DEBIAN_FRONTEND="noninteractive" && \
     apt-get update && \
     apt-get -yq upgrade && \
+    apt-get -yq install --no-install-recommends && \
+    apache2 libapache2-mod-php5.6 && \
     apt-get -yq install python-software-properties && \
     add-apt-repository -y ppa:ondrej/php && \
-    apt-get update && \
-    apt-get -yq install --no-install-recommends \
         php5.6-cli \
         php5.6-curl \
         php5.6-gd \
@@ -27,7 +24,6 @@ RUN export LANG=en_US.UTF-8 && \
         php5.6-pgsql \
         php5.6-sqlite3 \
         git curl zip unzip acl && \
-        apache2 libapache2-mod-php5.6 && \
     apt-get -y clean && \
     rm -rf /var/lib/apt/lists/*
 

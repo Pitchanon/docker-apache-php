@@ -5,9 +5,10 @@ MAINTAINER Pitchanon D <Pitchanon.d@gmail.com>
 ENV ENVIRONMENT=docker
 
 #Install php and dependenceis
-ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update && \
-    apt-get -yq install \
+RUN export DEBIAN_FRONTEND="noninteractive" && \
+    apt-get update && \
+    apt-get -yq upgrade && \
+    apt-get -yq install --no-install-recommends \
         php5-cli \
         php5-curl \
         php5-gd \
