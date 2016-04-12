@@ -19,7 +19,7 @@ RUN apt-get update && \
         php5-sqlite \
         git curl zip unzip acl && \
         apache2 libapache2-mod-php5 && \
-        apache2 libapache2-mod-php5 \
+    apt-get -y clean && \
     rm -rf /var/lib/apt/lists/*
 
 RUN sed -i "s/variables_order.*/variables_order = \"EGPCS\"/g" /etc/php5/apache2/php.ini

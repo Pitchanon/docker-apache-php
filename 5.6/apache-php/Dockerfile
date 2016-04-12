@@ -6,8 +6,16 @@ ENV ENVIRONMENT=docker
 
 #Install php and dependenceis
 ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update && \
-    apt-get -yq install \
+
+# Install base packages
+RUN export LANG=en_US.UTF-8 && \
+    export DEBIAN_FRONTEND="noninteractive" && \
+    apt-get update && \
+    apt-get -yq upgrade && \
+    apt-get -yq install python-software-properties && \
+    add-apt-repository -y ppa:ondrej/php && \
+    apt-get update && \
+    apt-get -yq install --no-install-recommends \
         php5.6-cli \
         php5.6-curl \
         php5.6-gd \
@@ -20,7 +28,7 @@ RUN apt-get update && \
         php5.6-sqlite3 \
         git curl zip unzip acl && \
         apache2 libapache2-mod-php5.6 && \
-        apt-get -y clean && \
+    apt-get -y clean && \
     rm -rf /var/lib/apt/lists/*
 
 RUN sed -i "s/variables_order.*/variables_order = \"EGPCS\"/g" /etc/php5.6/apache2/php.ini
