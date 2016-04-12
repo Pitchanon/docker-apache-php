@@ -1,6 +1,6 @@
 # docker apache php
 
-- [Docker Hub](https://hub.docker.com/r/pitchanon/docker-apache-php-mongo/)
+- [Docker Hub](https://hub.docker.com/r/pitchanon/docker-apache-php/)
 
 ## Components
 
