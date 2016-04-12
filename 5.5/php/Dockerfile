@@ -5,6 +5,7 @@ MAINTAINER Pitchanon D <Pitchanon.d@gmail.com>
 ENV ENVIRONMENT=docker
 
 # Install php and base packages
+ENV DEBIAN_FRONTEND noninteractive
 RUN export DEBIAN_FRONTEND="noninteractive"
 RUN apt-get update
 RUN apt-get -yq upgrade
