@@ -39,7 +39,7 @@ RUN export DEBIAN_FRONTEND="noninteractive" && \
         apache2 libapache2-mod-php7.0 && \
     apt-get -y clean && \
     rm -rf /var/lib/apt/lists/*
-    
+
 # Enable apache modules
 RUN a2dismod mpm_event && \
     a2enmod mpm_prefork rewrite vhost_alias headers ssl php7.0
