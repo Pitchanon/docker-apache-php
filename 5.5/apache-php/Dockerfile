@@ -1,0 +1,49 @@
+FROM ubuntu:14.04
+
+MAINTAINER Pitchanon D <Pitchanon.d@gmail.com>
+
+ENV ENVIRONMENT=docker
+
+#Install php and dependenceis
+ENV DEBIAN_FRONTEND noninteractive
+RUN apt-get update && \
+    apt-get -yq install \
+        php5-cli \
+        php5-curl \
+        php5-gd \
+        php5-mcrypt \
+        php5-mysql \
+        php5-intl \
+        php5-json \
+        php5-pgsql \
+        php5-sqlite \
+        git curl zip unzip acl && \
+        apache2 libapache2-mod-php5 && \
+        apache2 libapache2-mod-php5 \
+    rm -rf /var/lib/apt/lists/*
+
+RUN sed -i "s/variables_order.*/variables_order = \"EGPCS\"/g" /etc/php5/apache2/php.ini
+
+# Install composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Enable mcrypt
+RUN php5enmod mcrypt
+
+# Enable apache modules
+RUN a2enmod headers php5 rewrite ssl vhost_alias
+
+RUN rm -f /etc/apache2/sites-enabled/000-default.conf
+
+ADD run.sh /run.sh
+
+VOLUME ["/var/log/apache2"]
+
+EXPOSE 80 443
+
+#ADD sites-enabled/vhost.conf /etc/apache2/sites-enabled/
+#CMD ["/run.sh"]
+
+# grr, ENTRYPOINT resets CMD now
+ENTRYPOINT ["/bin/bash"]
+
