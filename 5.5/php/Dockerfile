@@ -24,8 +24,5 @@ RUN export DEBIAN_FRONTEND="noninteractive" && \
 RUN apt-get -y clean
 RUN rm -rf /var/lib/apt/lists/*
 
-# Install composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
 # Enable mcrypt
 RUN php5enmod mcrypt
