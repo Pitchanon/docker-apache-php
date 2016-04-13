@@ -37,6 +37,8 @@ CMD ["/run.sh"]
 $ docker run -d -v /host/www:/app -p 9991:80 pitchanon/docker-apache-php:latest
 ```
 
+## Examples
+
 ### Docker Compose
 
 In `docker-compose.yml` file.
@@ -74,7 +76,9 @@ test-db:
 
 ```
 
-##### File `docker.env` in `./env/docker.env`
+##### docker.env
+
+File `docker.env` in `./env/docker.env`.
 
 ```
 #docker.env
@@ -86,7 +90,9 @@ MYSQL_PORT_3306_TCP_ADDR=192.168.99.100
 MYSQL_PORT_3306_TCP_PORT=33991
 ```
 
-##### File `Dockerfile` in build path `./web/Dockerfile`
+##### Dockerfile (Web)
+
+File `Dockerfile` in build path `./web/Dockerfile`.
 
 ```dockerfile
 FROM pitchanon/docker-apache-php:5.5
@@ -134,6 +140,15 @@ $ sh start_server.sh
 - phpMyAdmin: [http://192.168.99.100:32991/]
     * Username: root
     * Password: 123456
+- MySQL version
+    ```sh
+    $ docker exec -it journal-mysql /bin/bash -c "mysql -V"
+    ```
+    > mysql  Ver 14.14 Distrib 5.5.49, for Linux (x86_64) using readline 5.1
+
+## Contact
+
+Email: Pitchanon.d@gmail.com
 
 [http://192.168.99.100:9991/]: http://192.168.99.100:9991/
 [http://192.168.99.100:32991/]: http://192.168.99.100:32991/
