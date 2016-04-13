@@ -12,9 +12,6 @@ RUN export DEBIAN_FRONTEND="noninteractive" && \
     apt-get -y clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Install composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
 RUN sed -i "s/variables_order.*/variables_order = \"EGPCS\"/g" /etc/php5/apache2/php.ini
 
 # Enable apache modules
