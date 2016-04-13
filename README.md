@@ -141,9 +141,11 @@ $ sh start_server.sh
     * Username: root
     * Password: 123456
 - MySQL version
+
     ```sh
     $ docker exec -it journal-mysql /bin/bash -c "mysql -V"
     ```
+    
     > mysql  Ver 14.14 Distrib 5.5.49, for Linux (x86_64) using readline 5.1
 
 ## Contact
