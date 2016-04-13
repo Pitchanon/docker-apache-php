@@ -2,7 +2,8 @@ FROM ubuntu:14.04
 
 MAINTAINER Pitchanon D <Pitchanon.d@gmail.com>
 
-ENV ENVIRONMENT=docker
+#ENV ENVIRONMENT=docker
+ENV ENVIRONMENT=${ENVIRONMENT}
 
 # Install php and base packages
 ENV DEBIAN_FRONTEND noninteractive
