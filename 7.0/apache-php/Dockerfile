@@ -5,7 +5,6 @@ MAINTAINER Pitchanon D <Pitchanon.d@gmail.com>
 # Install base packages
 RUN export DEBIAN_FRONTEND="noninteractive"
 RUN apt-get update
-RUN apt-get -yq upgrade
 RUN apt-get -yq --force-yes install --no-install-recommends apache2 libapache2-mod-php7.0
 RUN apt-get -y clean
 RUN rm -rf /var/lib/apt/lists/*
