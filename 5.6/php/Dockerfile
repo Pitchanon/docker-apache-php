@@ -7,6 +7,7 @@ ENV ENVIRONMENT=docker
 # Install base packages
 RUN export LANG=en_US.UTF-8
 RUN export DEBIAN_FRONTEND="noninteractive"
+RUN apt-get update
 RUN apt-get -yq install python-software-properties
 RUN add-apt-repository -y ppa:ondrej/php5-5.6
 RUN apt-get update
