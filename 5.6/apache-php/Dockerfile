@@ -5,15 +5,16 @@ MAINTAINER Pitchanon D <Pitchanon.d@gmail.com>
 # Install base packages
 RUN export DEBIAN_FRONTEND="noninteractive"
 RUN apt-get update
-RUN apt-get -yq --force-yes install --no-install-recommends apache2 libapache2-mod-php5.6
+RUN apt-get -yq --force-yes upgrade
+RUN apt-get -yq --force-yes install --no-install-recommends apache2
 RUN apt-get -y clean
 RUN rm -rf /var/lib/apt/lists/*
 
-RUN sed -i "s/variables_order.*/variables_order = \"EGPCS\"/g" /etc/php5.6/apache2/php.ini
+RUN sed -i "s/variables_order.*/variables_order = \"EGPCS\"/g" /etc/php5/apache2/php.ini
 
 # Enable apache modules
 RUN a2dismod mpm_event && \
-    a2enmod mpm_prefork rewrite vhost_alias headers ssl php5.6
+    a2enmod mpm_prefork rewrite vhost_alias headers ssl php5
 
 RUN rm -f /etc/apache2/sites-enabled/000-default.conf
 
