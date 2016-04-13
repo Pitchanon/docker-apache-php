@@ -3,12 +3,13 @@ FROM pitchanon/docker-apache-php:php-5.6
 MAINTAINER Pitchanon D <Pitchanon.d@gmail.com>
 
 # Install base packages
-RUN export DEBIAN_FRONTEND="noninteractive"
-RUN apt-get update
-RUN apt-get -yq --force-yes upgrade
-RUN apt-get -yq --force-yes install --no-install-recommends apache2
-RUN apt-get -y clean
-RUN rm -rf /var/lib/apt/lists/*
+RUN export DEBIAN_FRONTEND="noninteractive" && \
+    apt-get update && \
+    apt-get -yq --force-yes upgrade && \
+    apt-get -yq --force-yes install --no-install-recommends \
+        apache2 && \
+    apt-get -y clean && \
+    rm -rf /var/lib/apt/lists/*
 
 RUN sed -i "s/variables_order.*/variables_order = \"EGPCS\"/g" /etc/php5/apache2/php.ini
 
