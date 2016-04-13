@@ -143,7 +143,7 @@ $ sh start_server.sh
 - MySQL version
 
     ```sh
-    $ docker exec -it journal-mysql /bin/bash -c "mysql -V"
+    $ docker exec -it test_mysql /bin/bash -c "mysql -V"
     ```
     
     > mysql  Ver 14.14 Distrib 5.5.49, for Linux (x86_64) using readline 5.1
