@@ -5,7 +5,8 @@ MAINTAINER Pitchanon D <Pitchanon.d@gmail.com>
 ENV ENVIRONMENT=docker
 
 # Install base packages
-RUN export LANG=en_US.UTF-8
+#RUN export LANG=en_US.UTF-8
+RUN export LANG=C.UTF-8
 RUN export DEBIAN_FRONTEND="noninteractive"
 RUN apt-get update
 RUN apt-get -yq install python-software-properties
