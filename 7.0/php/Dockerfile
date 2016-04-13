@@ -8,7 +8,7 @@ ENV ENVIRONMENT=docker
 RUN export LANG=en_US.UTF-8
 RUN export DEBIAN_FRONTEND="noninteractive"
 RUN apt-get update
-RUN apt-get install software-properties-common
+RUN apt-get -yq install software-properties-common
 RUN apt-get -yq install python-software-properties
 RUN add-apt-repository -y ppa:ondrej/php
 RUN apt-get update
