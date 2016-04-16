@@ -1,15 +1,15 @@
-# Docker: apache php
+# Apache PHP Docker image
 
-- [Docker Hub]
+* [Docker Hub]
 
 ## Components
 
-- Base: Ubuntu 14.04
-- PHP 5.5 (tag: **5.5**)
-- PHP 5.6 (tag: **5.6**)
-- PHP 7.0 (tag: **5.7** or **latest**)
-- PHP composer
-- Apache 2.4 with mod_rewrite enabled
+* Base: Ubuntu 14.04
+* PHP 5.5 (tag: **5.5**)
+* PHP 5.6 (tag: **5.6**)
+* PHP 7.0 (tag: **5.7** or **latest**)
+* PHP composer
+* Apache 2.4 with mod_rewrite enabled
 
 ## Running & Building
 ### Using this container as a base
@@ -136,17 +136,21 @@ $ sh start_server.sh
 
 ### Result
 
-- Web: [http://192.168.99.100:9991/]
-- phpMyAdmin: [http://192.168.99.100:32991/]
-    * Username: root
-    * Password: 123456
-- MySQL version
+* Web: [http://192.168.99.100:9991/]
+* phpMyAdmin: [http://192.168.99.100:32991/]
+    - Username: root
+    - Password: 123456
+* MySQL version
 
     ```sh
     $ docker exec -it test_mysql /bin/bash -c "mysql -V"
     ```
     
     > mysql  Ver 14.14 Distrib 5.5.49, for Linux (x86_64) using readline 5.1
+
+## Environment variables summary
+
+* ``ENVIRONMENT`` - define environment variable
 
 ## Contact
 
