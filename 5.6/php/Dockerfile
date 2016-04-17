@@ -2,8 +2,8 @@ FROM ubuntu:14.04
 
 MAINTAINER Pitchanon D <Pitchanon.d@gmail.com>
 
-#ENV ENVIRONMENT=docker
-ENV ENVIRONMENT=${ENVIRONMENT}
+ENV ENVIRONMENT docker
+#ENV ENVIRONMENT ${ENVIRONMENT}
 
 # Install base packages
 RUN export LANG=en_US.UTF-8 && \

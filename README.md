@@ -56,16 +56,6 @@ test-web:
   env_file:
     - ./env/docker.env # environment-specific
 
-test-pma:
-  image: corbinu/docker-phpmyadmin
-  ports:
-    - 32991:80
-  container_name: test_phpmyadmin
-  links:
-    - test-db:mysql
-  env_file:
-    - ./env/docker.env # environment-specific
-
 test-db:
   image: pitchanon/docker-mysql:5.5
   container_name: test_mysql
@@ -74,9 +64,18 @@ test-db:
   env_file:
     - ./env/docker.env # environment-specific
 
+test-pma:
+  image: pitchanon/phpmyadmin:latest
+  ports:
+    - 32991:80
+  container_name: test_phpmyadmin
+  links:
+    - test-db:mysql
+  env_file:
+    - ./env/docker-phpmyadmin.env
 ```
 
-##### docker.env
+##### .env files
 
 File `docker.env` in `./env/docker.env`.
 
@@ -88,6 +87,19 @@ ENVIRONMENT=docker
 MYSQL_ROOT_PASSWORD=123456
 MYSQL_PORT_3306_TCP_ADDR=192.168.99.100
 MYSQL_PORT_3306_TCP_PORT=33991
+```
+
+File `docker-phpmyadmin.env` in `./env/docker-phpmyadmin.env`.
+
+```
+#docker-phpmyadmin.env
+
+PMA_ARBITRARY=1
+PMA_HOST=192.168.99.100
+PMA_PORT=33991
+PMA_USER=root
+PMA_PASSWORD=123456
+
 ```
 
 ##### Dockerfile (Web)
@@ -140,13 +152,16 @@ $ sh start_server.sh
 * phpMyAdmin: [http://192.168.99.100:32991/]
     - Username: root
     - Password: 123456
-* MySQL version
+* MySQL
+    - Username: root
+    - Password: 123456
+    - MySQL version
 
-    ```sh
-    $ docker exec -it test_mysql /bin/bash -c "mysql -V"
-    ```
-    
-    > mysql  Ver 14.14 Distrib 5.5.49, for Linux (x86_64) using readline 5.1
+      ```sh
+      $ docker exec -it test_mysql /bin/bash -c "mysql -V"
+      ```
+
+      > mysql  Ver 14.14 Distrib 5.5.49, for Linux (x86_64) using readline 5.1
 
 ## Environment variables summary
 

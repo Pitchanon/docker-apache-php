@@ -10,16 +10,6 @@ test-web:
   env_file:
     - ./env/docker.env # environment-specific
 
-test-pma:
-  image: corbinu/docker-phpmyadmin
-  ports:
-    - 32991:80
-  container_name: test_phpmyadmin
-  links:
-    - test-db:mysql
-  env_file:
-    - ./env/docker.env # environment-specific
-
 test-db:
   image: pitchanon/docker-mysql:5.5
   container_name: test_mysql
@@ -27,3 +17,14 @@ test-db:
     - 33991:3306
   env_file:
     - ./env/docker.env # environment-specific
+
+test-pma:
+  image: pitchanon/phpmyadmin:latest
+  ports:
+    - 32991:80
+  container_name: test_phpmyadmin
+  links:
+    - test-db:mysql
+  env_file:
+    - ./env/docker-phpmyadmin.env
+
