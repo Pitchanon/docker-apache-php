@@ -26,7 +26,7 @@ FROM pitchanon/docker-apache-php:latest
 
 ...
 
-ADD vhost.conf /etc/apache2/sites-enabled/
+ADD /path/to/vhost.conf /etc/apache2/sites-enabled/
 
 CMD ["/run.sh"]
 ```
@@ -34,7 +34,7 @@ CMD ["/run.sh"]
 ### Running
 
 ```sh
-$ docker run -d -v /host/www:/app -p 9991:80 pitchanon/docker-apache-php:latest
+$ docker run -d -v /host/www:/var/www/html -p 9991:80 pitchanon/docker-apache-php
 ```
 
 ## Examples
@@ -65,7 +65,7 @@ test-db:
     - ./env/docker.env # environment-specific
 
 test-pma:
-  image: pitchanon/phpmyadmin:latest
+  image: pitchanon/phpmyadmin
   ports:
     - 32991:80
   container_name: test_phpmyadmin
