@@ -24,6 +24,7 @@ RUN apt-get -y --force-yes install --no-install-recommends \
     php5-gd \
     php5-intl \
     php5-xsl \
+    php5-xdebug \
     git curl zip unzip acl
 RUN apt-get -y clean
 RUN rm -rf /var/lib/apt/lists/*

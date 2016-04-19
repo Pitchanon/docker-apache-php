@@ -20,6 +20,7 @@ RUN export DEBIAN_FRONTEND="noninteractive" && \
     php5-json \
     php5-pgsql \
     php5-sqlite \
+    php5-xdebug \
     git curl zip unzip acl
 RUN apt-get -y clean
 RUN rm -rf /var/lib/apt/lists/*
