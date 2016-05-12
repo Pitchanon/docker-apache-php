@@ -5,10 +5,10 @@ test-web:
   volumes:
     - ../:/var/www/html
   container_name: test_web
+  environment:
+    - ENVIRONMENT=docker
   links:
     - test-db:mysql
-  env_file:
-    - ./env/docker.env # environment-specific
 
 test-db:
   image: pitchanon/docker-mysql:5.5
