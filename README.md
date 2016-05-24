@@ -7,7 +7,7 @@
 * Base: Ubuntu 14.04
 * PHP 5.5 (tag: **5.5**)
 * PHP 5.6 (tag: **5.6**)
-* PHP 7.0 (tag: **5.7** or **latest**)
+* PHP 7.0 (tag: **7.0** or **latest**)
 * PHP composer
 * Apache 2.4 with mod_rewrite enabled
 
