@@ -29,6 +29,5 @@ EXPOSE 80 443
 #CMD ["/run.sh"]
 
 # grr, ENTRYPOINT resets CMD now
-#ENTRYPOINT ["/bin/bash"]
-CMD ["/usr/sbin/apache2", "-D", "FOREGROUND"]
+ENTRYPOINT ["/bin/bash"]
 
